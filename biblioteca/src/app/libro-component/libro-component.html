@@ -2,7 +2,11 @@
 <main>
   <h1>Biblioteca</h1>
   <p>Bienvenido a la biblioteca</p>
-  <h2>Agregar Libro</h2>
+  @if (index === -1) {
+    <h2>Agregar Libro</h2>
+  } @else {
+    <h2>Editar Libro</h2>
+  }
   <form (ngSubmit)="agregarLibro()" #libroForm="ngForm">
     <div>
       <label for="codigo">Código:</label>
@@ -20,7 +24,12 @@
       <label for="anio">Año:</label>
       <input type="number" id="anio" [(ngModel)]="libro.anio" name="anio" required>
     </div>
-    <button type="submit">Guardar Libro</button>
+    @if (index === -1) {
+      <button type="submit">Agregar Libro</button>
+    } @else {
+      <button type="submit">Actualizar Libro</button>
+    }
+    <button type="button" (click)="cancelarEdicion()">Cancelar</button>
   </form>
 
   <h2>Lista de Libros</h2>
