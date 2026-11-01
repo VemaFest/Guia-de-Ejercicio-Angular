@@ -15,8 +15,7 @@ export class LoginComponent {
   constructor(private router: Router) { }
 
   login() {
-      console.log('usuario:', JSON.stringify(this.usuario), 'clave:', JSON.stringify(this.clave));
-    if (this.usuario === 'admin' && this.clave === '123') {
+    if (this.usuario === 'vendedor' && this.clave === 'tienda123') {
       localStorage.setItem('sesionTienda', this.usuario);
       this.router.navigate(['/productos']);
     } else {

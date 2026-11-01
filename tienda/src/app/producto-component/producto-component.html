@@ -1,1 +1,21 @@
 <app-logout-component></app-logout-component>
+<main>  
+    <table>
+        <th>Código</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Existencias</th>
+        <tbody>
+            @for (producto of productos; track producto.id; let i = $index) {
+                @if (producto.softdelete === false) {
+                <tr>
+                    <td>{{ producto.codigo }}</td>
+                    <td>{{ producto.nombre }}</td>
+                    <td>{{ producto.precio }}</td>
+                    <td>{{ producto.existencias }}</td>
+                </tr>
+                }
+            }
+        </tbody>
+    </table>
+</main>
