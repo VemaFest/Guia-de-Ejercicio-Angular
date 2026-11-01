@@ -2,4 +2,32 @@
 <main>
   <h1>Biblioteca</h1>
   <p>Bienvenido a la biblioteca</p>
+
+  <h2>Lista de Libros</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Título</th>
+        <th>Autor</th>
+        <th>Año</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (libro of libros; track libro.id; let i = $index) {
+        <tr>
+          <td>@libro.codigo</td>
+          <td>@libro.titulo</td>
+          <td>@libro.autor</td>
+          <td>@libro.anio</td>
+          <td>
+            <button (click)="editarLibro(i)">Editar</button>
+            <button (click)="eliminarLibro(i)">Eliminar</button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+
 </main>
