@@ -45,16 +45,18 @@
     </thead>
     <tbody>
       @for (libro of libros; track libro.id; let i = $index) {
-        <tr>
-          <td>{{libro.codigo}}</td>
-          <td>{{libro.titulo}}</td>
-          <td>{{libro.autor}}</td>
-          <td>{{libro.anio}}</td>
-          <td>
-            <button (click)="editarLibro(i)">Editar</button>
-            <button (click)="eliminarLibro(i)">Eliminar</button>
-          </td>
-        </tr>
+        @if (libro.softdelete === false) {
+          <tr>
+            <td>{{libro.codigo}}</td>
+            <td>{{libro.titulo}}</td>
+            <td>{{libro.autor}}</td>
+            <td>{{libro.anio}}</td>
+            <td>
+              <button (click)="editarLibro(i)">Editar</button>
+              <button (click)="eliminarLibro(i)">Eliminar</button>
+            </td>
+          </tr>
+        }
       }
     </tbody>
   </table>

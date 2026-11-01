@@ -65,7 +65,10 @@ export class LibroComponent {
     this.resetLibro();
   }
 
-  eliminarLibro(index: number) {}
+  eliminarLibro(index: number) {
+    this.libros[index].softdelete = true;
+    localStorage.setItem('libros', JSON.stringify(this.libros));
+  }
 
   resetLibro() {
     this.libro = {
