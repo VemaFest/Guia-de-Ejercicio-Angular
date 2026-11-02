@@ -1,1 +1,23 @@
 <app-logout-component></app-logout-component>
+<main>
+    <h2>Mascotas registradas</h2>
+    <table>
+        <thead>
+            <th>Nombre</th>
+            <th>Especie</th>
+            <th>Edad</th>
+            <th>Propietario</th>
+        </thead>
+        <tbody>
+            @for (mascota of mascotas; track $index) {
+                <td> {{ mascota.nombre }} </td>
+                <td> {{ mascota.especie }} </td>
+                <td> {{ mascota.edad }} </td>
+                <td> {{ mascota.propietario}} </td>
+            }
+        </tbody>
+    </table>
+    @if (mascotas.length === 0) {
+        No hay mascotas registradas
+    }
+</main>
