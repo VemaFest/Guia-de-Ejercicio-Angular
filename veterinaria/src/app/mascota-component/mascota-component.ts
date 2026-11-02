@@ -34,6 +34,7 @@ export class MascotaComponent {
     
     this.indexEdit === -1 ? this.registrarMascota(m) : this.actualizarMascota(m);
     localStorage.setItem('mascotas', JSON.stringify(this.mascotas))
+    this.refrescarMascota();
   }
 
   registrarMascota(m: Mascota) {
@@ -48,6 +49,12 @@ export class MascotaComponent {
   editarMascota(index: number){
     this.indexEdit = index;
     this.mascota = {...this.mascotas[index]};
+  }
+
+  eliminarMascota(index: number) {
+    this.mascotas.splice(index, 1);
+    localStorage.setItem('mascotas', JSON.stringify([this.mascota]));
+    this.refrescarMascota();
   }
 
   refrescarMascota(){
