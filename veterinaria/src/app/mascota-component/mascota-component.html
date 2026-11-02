@@ -1,5 +1,30 @@
 <app-logout-component></app-logout-component>
 <main>
+    <h1>Registrar Mascota</h1>
+    <form (ngSubmit)="formulario()">
+        <div>
+            <label>Nombre</label>
+            <input type="text" required="required" name="nombre" [(ngModel)]="mascota.nombre">
+        </div>
+        <div>
+            <label>Especie</label>
+            <input type="text" required="required" name="especie" [(ngModel)]="mascota.especie">
+        </div>
+        <div>
+            <label>Edad</label>
+            <input type="number" required="required" name="edad" [(ngModel)]="mascota.edad">
+        </div>
+        <div>
+            <label>Propietario</label>
+            <input type="text" required="required" name="propietario" [(ngModel)]="mascota.propietario">
+        </div>
+        <div>
+            <button type="submit">Registrar Mascota</button>
+        </div>
+    </form>
+
+
+
     <h2>Mascotas registradas</h2>
     <table>
         <thead>
