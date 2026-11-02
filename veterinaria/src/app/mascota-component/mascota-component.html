@@ -1,6 +1,10 @@
 <app-logout-component></app-logout-component>
 <main>
-    <h1>Registrar Mascota</h1>
+    @if (indexEdit === -1) {
+        <h1>Registrar Mascota</h1>
+    } @else {
+        <h1>Actualizar Mascota</h1>
+    }
     <form (ngSubmit)="formulario()">
         <div>
             <label>Nombre</label>
@@ -19,7 +23,12 @@
             <input type="text" required="required" name="propietario" [(ngModel)]="mascota.propietario">
         </div>
         <div>
-            <button type="submit">Registrar Mascota</button>
+            @if (indexEdit === -1) {
+                <button type="submit">Registrar Mascota</button>
+            } @else {
+                <button type="submit">Actualizar Mascota</button>
+            }
+            <button type="reset" (click)="refrescarMascota()">Cancelar</button>
         </div>
     </form>
 
@@ -32,13 +41,19 @@
             <th>Especie</th>
             <th>Edad</th>
             <th>Propietario</th>
+            <th>Acciones</th>
         </thead>
         <tbody>
-            @for (mascota of mascotas; track $index) {
-                <td> {{ mascota.nombre }} </td>
-                <td> {{ mascota.especie }} </td>
-                <td> {{ mascota.edad }} </td>
-                <td> {{ mascota.propietario}} </td>
+            @for (mascota of mascotas; track mascota.id; let i = $index) {
+                <tr>
+                    <td> {{ mascota.nombre }} </td>
+                    <td> {{ mascota.especie }} </td>
+                    <td> {{ mascota.edad }} </td>
+                    <td> {{ mascota.propietario}} </td>
+                    <td>
+                        <button type="button" (click)="editarMascota(i)">Editar</button>
+                    </td>
+                </tr>
             }
         </tbody>
     </table>

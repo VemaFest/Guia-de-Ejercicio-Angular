@@ -40,9 +40,18 @@ export class MascotaComponent {
     m.id = this.mascotas.reduce((max, x) => Math.max(max, x.id), 0) + 1;
     this.mascotas.push(m);
   }
-  actualizarMascota(m: Mascota) {}
+  actualizarMascota(m: Mascota) {
+    Object.assign(this.mascotas[this.indexEdit], m)
+    this.indexEdit = -1
+  }
+
+  editarMascota(index: number){
+    this.indexEdit = index;
+    this.mascota = {...this.mascotas[index]};
+  }
 
   refrescarMascota(){
       this.mascota = {id: 0, nombre: '', especie: '', edad: 0, propietario: ''}
+      this.indexEdit = -1
   }
 }
