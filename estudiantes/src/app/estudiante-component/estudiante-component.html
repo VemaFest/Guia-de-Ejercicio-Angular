@@ -13,8 +13,13 @@
 
         <label for="fechaingreso">Fecha de Ingreso:</label>
         <input type="date" id="fechaingreso" [(ngModel)]="estudiante.fechaingreso" name="fechaingreso" required>
-        
-        <button type="submit">Agregar Estudiante</button>
+
+        @if (index === -1) {
+            <button type="submit">Agregar Estudiante</button>
+        } @else {
+            <button type="submit">Actualizar Estudiante</button>
+        }
+
         <button type="button" (click)="resetearFormulario()">Cancelar</button>
     </form>
     <h2>Lista de Estudiantes</h2>
@@ -25,6 +30,7 @@
                 <th>Nombre</th>
                 <th>Carrera</th>
                 <th>Fecha de Ingreso</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -34,6 +40,9 @@
                     <td>{{ estudiante.nombre }}</td>
                     <td>{{ estudiante.carrera }}</td>
                     <td>{{ estudiante.fechaingreso }}</td>
+                    <td>
+                        <button type="button" (click)="actualizarEstudiante(i)">Actualizar</button>
+                    </td>
                 </tr>
             }
         </tbody>
