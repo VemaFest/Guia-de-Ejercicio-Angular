@@ -1,5 +1,23 @@
 <app-logout-component></app-logout-component>
 <main>
+    <h1>Registrar estudiante</h1>
+    <form (ngSubmit)="agregarEstudiante()">
+        <label for="cuenta">Cuenta:</label>
+        <input type="text" id="cuenta" [(ngModel)]="estudiante.cuenta" name="cuenta" required>
+
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" [(ngModel)]="estudiante.nombre" name="nombre" required>
+
+        <label for="carrera">Carrera:</label>
+        <input type="text" id="carrera" [(ngModel)]="estudiante.carrera" name="carrera" required>
+
+        <label for="fechaingreso">Fecha de Ingreso:</label>
+        <input type="date" id="fechaingreso" [(ngModel)]="estudiante.fechaingreso" name="fechaingreso" required>
+        
+        <button type="submit">Agregar Estudiante</button>
+        <button type="button" (click)="resetearFormulario()">Cancelar</button>
+    </form>
+    <h2>Lista de Estudiantes</h2>
     <table>
         <thead>
             <tr>
