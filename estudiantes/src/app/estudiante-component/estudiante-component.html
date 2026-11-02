@@ -1,1 +1,23 @@
 <app-logout-component></app-logout-component>
+<main>
+    <table>
+        <thead>
+            <tr>
+                <th>Cuenta</th>
+                <th>Nombre</th>
+                <th>Carrera</th>
+                <th>Fecha de Ingreso</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (estudiante of estudiantes; track estudiante.id; let i = $index) {
+                <tr>
+                    <td>{{ estudiante.cuenta }}</td>
+                    <td>{{ estudiante.nombre }}</td>
+                    <td>{{ estudiante.carrera }}</td>
+                    <td>{{ estudiante.fechaingreso }}</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</main>
