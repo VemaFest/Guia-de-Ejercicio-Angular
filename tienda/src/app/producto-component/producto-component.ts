@@ -76,6 +76,10 @@ export class ProductoComponent {
     this.producto = { ...this.productos[index] };
   }
 
+  eliminarProducto(index: number) {
+    this.productos[index].softdelete = true;
+    localStorage.setItem('productos', JSON.stringify(this.productos));
+  }
 
 
 }
