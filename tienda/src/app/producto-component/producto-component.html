@@ -33,6 +33,7 @@
         <th>Nombre</th>
         <th>Precio</th>
         <th>Existencias</th>
+        <th>Acciones</th>
         <tbody>
             @for (producto of productos; track producto.id; let i = $index) {
                 @if (producto.softdelete === false) {
@@ -41,6 +42,9 @@
                     <td>{{ producto.nombre }}</td>
                     <td>L{{ producto.precio }}</td>
                     <td>{{ producto.existencias }} unidades</td>
+                    <td>
+                        <button type="button" (click)="editarProducto(i)">Editar</button>
+                    </td>
                 </tr>
                 }
             }

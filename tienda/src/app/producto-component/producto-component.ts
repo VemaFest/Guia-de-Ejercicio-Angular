@@ -71,6 +71,10 @@ export class ProductoComponent {
     this.resetProducto();
   }
   
+  editarProducto(index: number) {
+    this.index = index;
+    this.producto = { ...this.productos[index] };
+  }
 
 
 
