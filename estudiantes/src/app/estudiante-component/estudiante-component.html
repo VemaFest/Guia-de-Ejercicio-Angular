@@ -42,9 +42,14 @@
                     <td>{{ estudiante.fechaingreso }}</td>
                     <td>
                         <button type="button" (click)="actualizarEstudiante(i)">Actualizar</button>
+                        <button type="button" (click)="eliminarEstudiante(i)">Eliminar</button>
                     </td>
                 </tr>
+                
             }
         </tbody>
     </table>
+    @if (estudiantes.length === 0) {
+        No hay estudiantes registrados
+    }
 </main>

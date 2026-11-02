@@ -50,4 +50,13 @@ export class EstudianteComponent {
     this.index = index;
     this.estudiante = { ...this.estudiantes[index] };
   }
+
+  eliminarEstudiante(index: number) {
+    this.estudiantes.splice(index, 1);
+    localStorage.setItem('estudiantes', JSON.stringify(this.estudiante)); 
+    this.resetearFormulario();
+  }
+
+  
+
 }
