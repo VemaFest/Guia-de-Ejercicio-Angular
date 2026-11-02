@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LogoutComponent } from '../logout-component/logout-component';
-import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 
 interface Producto {
@@ -14,31 +14,13 @@ interface Producto {
 }
 
 @Component({
-  imports: [LogoutComponent,CommonModule],
+  imports: [LogoutComponent,FormsModule],
   selector: 'app-producto-component',
   styleUrl: './producto-component.css',
   templateUrl: './producto-component.html',
 })
 export class ProductoComponent {
-  productos: Producto[] = [
-    {
-      id: 1,
-      codigo: 'P001',
-      nombre: 'Cuaderno',
-      precio: 35.50,
-      existencias: 20,
-      softdelete: false
-    },
-    {
-      id: 2,
-      codigo: 'P002',
-      nombre: 'Lápiz',
-      precio: 8.00,
-      existencias: 0,
-      softdelete: false
-    }
-  ];
-
+  productos: Producto[] = [];
   producto: Producto = {
     id: 0,
     codigo: '',
@@ -57,7 +39,38 @@ export class ProductoComponent {
     }
    }
 
-
+   crearProducto() {
+    if (this.producto.codigo && this.producto.nombre && this.producto.precio > 0 && this.producto.existencias >= 0) {
+      if (this.index === -1) {
+        // Agregar un nuevo producto
+        this.producto.id = this.productos.length > 0 ? Math.max(...this.productos.map(p => p.id)) + 1 : 1;
+        this.productos.push({ ...this.producto, softdelete: false });
+      } else {
+        // Actualizar el producto existente
+        this.productos[this.index] = { ...this.producto, id: this.productos[this.index].id, softdelete: false };
+        this.index = -1; 
+      }
+      localStorage.setItem('productos', JSON.stringify(this.productos));
+      this.resetProducto();
+    } else {
+      alert('Por favor, complete todos los campos correctamente.');
+    }
+  }
+  resetProducto() {
+    this.producto = {
+      id: 0,
+      codigo: '',
+      nombre: '',
+      precio: 0,
+      existencias: 0,
+      softdelete: false
+    };
+  }
+  cancelarEdicion() {
+    this.index = -1;
+    this.resetProducto();
+  }
+  
 
 
 

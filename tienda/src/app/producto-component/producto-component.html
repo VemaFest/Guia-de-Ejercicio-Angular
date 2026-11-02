@@ -1,5 +1,33 @@
 <app-logout-component></app-logout-component>
 <main>  
+    <h1>Tienda</h1>
+    <p>Bienvenido a la tienda</p>
+    <form (ngSubmit)="crearProducto()" #productoForm="ngForm">
+        <div>
+            <label for="codigo">Código:</label>
+            <input type="text" id="codigo" [(ngModel)]="producto.codigo" name="codigo" required>
+        </div>
+        <div>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" [(ngModel)]="producto.nombre" name="nombre" required>
+        </div>
+        <div>
+            <label for="precio">Precio:</label>
+            <input min="1" type="number" id="precio" [(ngModel)]="producto.precio" name="precio" required>
+        </div>
+        <div>
+            <label for="existencias">Existencias:</label>
+            <input min="0" type="number" id="existencias" [(ngModel)]="producto.existencias" name="existencias" required>
+        </div>
+        @if (index === -1) {
+            <button type="submit">Agregar Producto</button>
+        } @else {
+            <button type="submit">Actualizar Producto</button>
+        }
+        <button type="button" (click)="cancelarEdicion()">Cancelar</button>
+
+    </form>
+    <h2>Lista de Productos</h2>
     <table>
         <th>Código</th>
         <th>Nombre</th>
@@ -11,8 +39,8 @@
                 <tr>
                     <td>{{ producto.codigo }}</td>
                     <td>{{ producto.nombre }}</td>
-                    <td>{{ producto.precio }}</td>
-                    <td>{{ producto.existencias }}</td>
+                    <td>L{{ producto.precio }}</td>
+                    <td>{{ producto.existencias }} unidades</td>
                 </tr>
                 }
             }
